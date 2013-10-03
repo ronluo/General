@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2A372132-7E0B-4A60-8389-9659620027DC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EntitiesGenerator</RootNamespace>
+    <AssemblyName>EntitiesGenerator</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\SQLite-1.0.66\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseConnectionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseConnectionDialog.Designer.cs">
+      <DependentUpon>DatabaseConnectionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Databases\SqlServerDatabase.cs" />
+    <Compile Include="Definitions\DataColumn.cs" />
+    <Compile Include="Definitions\DataTable.cs" />
+    <Compile Include="Definitions\Definition.cs" />
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generators\CodeGenerator.cs" />
+    <Compile Include="Generators\SqlGenerator.cs" />
+    <Compile Include="Generators\XmlGenerator.cs" />
+    <Compile Include="IDatabase.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseConnectionDialog.resx">
+      <DependentUpon>DatabaseConnectionDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectTableForm.resx">
+      <DependentUpon>SelectTableForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Readers\DatabaseReader.cs" />
+    <Compile Include="Readers\SqlFileReader.cs" />
+    <Compile Include="SelectTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectTableForm.Designer.cs">
+      <DependentUpon>SelectTableForm.cs</DependentUpon>
+    </Compile>
+    <Content Include="Templates\DATAOBJECT.Proxy.cs">
+      <DependentUpon>DATAOBJECT.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\DATAOBJECTCOLUMN_ATTRIBUTE.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\DATAOBJECT_ATTRIBUTE.Designer.cs">
+      <DependentUpon>DATAOBJECT.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="app.ico" />
+    <Content Include="Templates\NEWTYPE.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\DATAOBJECTCOLUMN.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\DATAOBJECT.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\DATAOBJECT.Expression.cs">
+      <DependentUpon>DATAOBJECT.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\DATAOBJECT.Designer.cs">
+      <DependentUpon>DATAOBJECT.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\NAMESPACE.csproj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\NAMESPACE_08.csproj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Properties\AssemblyInfo.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\RaisingStudio.Common\RaisingStudio.Common_08.csproj">
+      <Project>{899E3BE7-1FE5-4CDF-AA11-6CA6211C6F19}</Project>
+      <Name>RaisingStudio.Common_08</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\RaisingStudio.Data\RaisingStudio.Data_08.csproj">
+      <Project>{2DE3A684-4C8B-4D1C-80E6-997E728C2451}</Project>
+      <Name>RaisingStudio.Data_08</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\System.Data.SharePoint\System.Data.SharePoint.csproj">
+      <Project>{42E3A178-8F04-4057-B97B-D13EF8E64183}</Project>
+      <Name>System.Data.SharePoint</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCG_CTP_2.6_Implemented_DBSchemaProviders_src\Providers\SmartCodeGen.Providers_08.csproj">
+      <Project>{46AFA70A-4882-4FC5-88EF-30AD0BADFC26}</Project>
+      <Name>SmartCodeGen.Providers_08</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCG_CTP_2.6_Implemented_DBSchemaProviders_src\SmartCodeGen.ImpementedProviders.MySql\SmartCodeGen.ImpementedProviders.MySql_08.csproj">
+      <Project>{E7BA17D6-5B95-4750-B668-FC9DEB5D65A7}</Project>
+      <Name>SmartCodeGen.ImpementedProviders.MySql_08</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCG_CTP_2.6_Implemented_DBSchemaProviders_src\SmartCodeGen.ImplementedProviders\SmartCodeGen.ImplementedProviders_08.csproj">
+      <Project>{585B7AE5-419C-41E7-8B51-D47142C1AB73}</Project>
+      <Name>SmartCodeGen.ImplementedProviders_08</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
